@@ -2,6 +2,7 @@
 
 # ./run.sh [path to x11docker]
 
+set -e
 cd "$(dirname "$BASH_SOURCE")"
 
 docker build -t steam .
@@ -18,7 +19,7 @@ eval "$x11docker" steam \
     --gpu \
     `# Store steam data in ~/.local/share/x11docker/steam` \
     --home \
-    `# Use nxagent. It is nice because it supports both seamless and desktop modes` \
-    --nxagent \
+    `# Use hostdisplay. Sadly not ideal, but one of my games needs this.` \
+    --hostdisplay \
     `# Use pulseaudio. This also seems to stop a segfault` \
     --pulseaudio
