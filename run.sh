@@ -6,7 +6,7 @@
 set -e
 cd "$(dirname "$BASH_SOURCE")"
 
-docker build -t steam .
+[ -t 0 ] && sudo docker build -t steam .
 
 x11docker="$1"
 if [ -z "$x11docker" ]; then
@@ -24,3 +24,5 @@ eval "$x11docker" steam \
     --hostdisplay \
     `# Use pulseaudio. This also seems to stop a segfault` \
     --pulseaudio
+    `# More segfault stopping...` \
+    --systemd \

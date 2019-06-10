@@ -13,5 +13,8 @@ RUN gdebi -n steam.deb
 ## Required libraries (avoids automatic installation at runtime)
 RUN apt-get install -y libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libc6:i386
 
+# Optional bonus packages that help certain features
+RUN apt-get install -y nautilus xdg-utils
+
 # Run
 CMD ["steam"]
