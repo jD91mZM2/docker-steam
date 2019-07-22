@@ -14,8 +14,8 @@ if [ -z "$x11docker" ]; then
 fi
 
 eval "$x11docker" steam \
-    `# Allow system dbus. This seems to stop a segfault.` \
-    --dbus-system \
+    `# Use systemd. This seems to stop a segfault.` \
+    --init=systemd \
     `# Use the gpu so games do not run too slow :)` \
     --gpu \
     `# Store steam data in ~/.local/share/x11docker/steam` \
@@ -23,6 +23,6 @@ eval "$x11docker" steam \
     `# Use hostdisplay. Sadly not ideal, but one of my games needs this.` \
     --hostdisplay \
     `# Use pulseaudio. This also seems to stop a segfault` \
-    --pulseaudio
+    --pulseaudio \
     `# More segfault stopping...` \
-    --systemd \
+    --init=systemd
